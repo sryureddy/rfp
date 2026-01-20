@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vysin</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼️</text></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <div class="particles-background"></div>
+    <div class="container">
+        <header class="app-header">
+            <h1 class="main-title">
+                <span class="title-text">AI Visionary: Enhance, Transform and Recognize</span>
+                <span class="title-accent">Enhance the way you see the World</span>
+            </h1>
+            <p class="subtitle"></p>
+        </header>
+
+        <nav class="tool-nav">
+            <button class="nav-btn active" data-tab="style">
+                <span class="nav-icon">🎨</span>
+                <span class="nav-text">Style Transfer</span>
+            </button>
+            <button class="nav-btn" data-tab="caption">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Image Caption</span>
+            </button>
+            <button class="nav-btn" data-tab="enhance">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Image Enhancement</span>
+            </button>
+        </nav>
+
+        <main class="workspace">
+            <!-- Style Transfer Section -->
+            <section id="style-section" class="workspace-section active">
+                <div class="section-header">
+                    <h2>Style Transfer</h2>
+                    <p class="section-description">Transform your images with AI-powered style transfer</p>
+                </div>
+                
+                <div class="workspace-content">
+                    <form id="style-form" class="tool-form">
+                        <div class="form-group">
+                            <label for="style-image" class="file-input-label">
+                                <span class="label-icon">📁</span>
+                                <span class="label-text">Choose Image</span>
+                            </label>
+                            <input type="file" id="style-image" name="image" accept="image/*" required>
+                            <span class="file-name">No file chosen</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="style-prompt">Style Description</label>
+                            <input type="text" id="style-prompt" name="prompt" 
+                                   placeholder="e.g., cyberpunk city, oil painting, pencil sketch" required>
+                        </div>
+                        
+                        <button type="submit" class="action-btn">
+                            <span class="btn-icon">🔄</span>
+                            <span class="btn-text">Transform Image</span>
+                        </button>
+                    </form>
+
+                    <div class="result-preview">
+                        <div class="preview-container">
+                            <div class="preview-box original">
+                                <h3>Original</h3>
+                                <div class="image-container">
+                                    <div class="placeholder">Upload an image</div>
+                                </div>
+                            </div>
+                            <div class="preview-box processed">
+                                <h3>Processed</h3>
+                                <div class="image-container">
+                                    <div class="placeholder">Result will appear here</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="download-section"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Image Caption Section -->
+            <section id="caption-section" class="workspace-section">
+                <div class="section-header">
+                    <h2>Image Caption</h2>
+                    <p class="section-description">Generate captions for your images</p>
+                </div>
+                
+                <div class="workspace-content">
+                    <form id="caption-form" class="tool-form">
+                        <div class="form-group">
+                            <label for="caption-image" class="file-input-label">
+                                <span class="label-icon">📁</span>
+                                <span class="label-text">Choose Image</span>
+                            </label>
+                            <input type="file" id="caption-image" name="image" accept="image/*" required>
+                            <span class="file-name">No file chosen</span>
+                        </div>
+                        
+                        <button type="submit" class="action-btn">
+                            <span class="btn-icon">🤖</span>
+                            <span class="btn-text">Generate Caption</span>
+                        </button>
+                    </form>
+
+                    <div class="result-preview">
+                        <div class="preview-container">
+                            <div class="preview-box original">
+                                <h3>Original Image</h3>
+                                <div class="image-container">
+                                    <div class="placeholder">Upload an image</div>
+                                </div>
+                            </div>
+                            <div class="preview-box caption">
+                                <h3>Generated Caption</h3>
+                                <div class="caption-container">
+                                    <div class="placeholder">Caption will appear here</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Image Enhancement Section -->
+            <section id="enhance-section" class="workspace-section">
+                <div class="section-header">
+                    <h2>Image Enhancement</h2>
+                    <p class="section-description">Enhance your images with AI-powered improvements</p>
+                </div>
+                
+                <div class="workspace-content">
+                    <form id="enhance-form" class="tool-form">
+                        <div class="form-group">
+                            <label for="enhance-image" class="file-input-label">
+                                <span class="label-icon">📁</span>
+                                <span class="label-text">Choose Image</span>
+                            </label>
+                            <input type="file" id="enhance-image" name="image" accept="image/*" required>
+                            <span class="file-name">No file chosen</span>
+                        </div>
+                        
+                        <button type="submit" class="action-btn">
+                            <span class="btn-icon">✨</span>
+                            <span class="btn-text">Enhance Image</span>
+                        </button>
+                    </form>
+
+                    <div class="result-preview">
+                        <div class="preview-container">
+                            <div class="preview-box original">
+                                <h3>Original</h3>
+                                <div class="image-container">
+                                    <div class="placeholder">Upload an image</div>
+                                </div>
+                            </div>
+                            <div class="preview-box processed">
+                                <h3>Enhanced</h3>
+                                <div class="image-container">
+                                    <div class="placeholder">Result will appear here</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="download-section"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="loading-overlay hidden">
+            <div class="loading-content">
+                <div class="loading-border"></div>
+                <p class="loading-text">Processing your image...</p>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>Powered by Advanced AI Neural Networks</p>
+            <div class="footer-accent"></div>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
